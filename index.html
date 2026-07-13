@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>С Днём Рождения!</title>
+    <title>Ты в моих глазах 💫</title>
     <style>
+        /* --- ОБЩИЕ НАСТРОЙКИ --- */
         * {
             margin: 0;
             padding: 0;
@@ -12,17 +13,17 @@
         }
 
         body {
-            background: #0b0b1a;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0a0a1a;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
             color: #fff;
             overflow-x: hidden;
         }
 
-        /* Контейнер для всех слайдов */
+        /* Контейнер */
         .story-container {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
-            padding: 20px 20px 100px 20px;
+            padding: 20px 20px 80px 20px;
         }
 
         /* Каждый слайд */
@@ -33,157 +34,179 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            opacity: 0.3;
-            transform: scale(0.95);
-            transition: all 0.8s ease;
-            padding: 30px 20px;
-            border-bottom: 2px dashed rgba(255, 255, 255, 0.05);
+            padding: 40px 20px;
+            opacity: 0.2;
+            transform: translateY(60px);
+            transition: all 0.9s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            scroll-margin-top: 20px;
         }
 
-        /* Когда слайд виден */
         .slide.visible {
             opacity: 1;
-            transform: scale(1);
+            transform: translateY(0);
         }
 
-        /* Заголовки */
-        .slide h1 {
-            font-size: 2.8rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #f7971e, #ffd200);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* --- ТЕКСТЫ --- */
+        .slide .number {
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #ffd700;
+            background: rgba(255, 215, 0, 0.12);
+            padding: 6px 20px;
+            border-radius: 30px;
+            display: inline-block;
             margin-bottom: 20px;
         }
 
         .slide h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #fff;
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.3;
         }
 
-        .slide p {
-            font-size: 1.3rem;
+        .slide h2 .highlight {
+            background: linear-gradient(135deg, #ffd700, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .slide .desc {
+            font-size: 1.2rem;
             line-height: 1.8;
-            color: #d0d0e0;
-            max-width: 450px;
+            color: #c8c8e0;
+            max-width: 520px;
+            margin-bottom: 25px;
         }
 
-        .slide .big-text {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #ff6b6b;
+        .slide .desc em {
+            color: #ffd700;
+            font-style: normal;
+            font-weight: 600;
         }
 
-        /* Стиль для фото-рамки */
-        .photo-frame {
-            width: 280px;
-            height: 280px;
-            border-radius: 30px;
-            overflow: hidden;
-            margin: 20px auto;
-            border: 4px solid #ffd200;
-            box-shadow: 0 20px 60px rgba(255, 210, 0, 0.2);
-            background: #222;
+        /* --- ФОТО-БЛОК (два фото рядом) --- */
+        .photo-row {
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
             justify-content: center;
+            gap: 15px;
+            width: 100%;
+            max-width: 500px;
+            margin: 10px 0 10px 0;
         }
 
-        .photo-frame img {
+        .photo-item {
+            flex: 1 1 180px;
+            min-width: 140px;
+            max-width: 260px;
+            height: 220px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 215, 0, 0.25);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+            background: #1a1a2e;
+            transition: 0.4s ease;
+        }
+
+        .photo-item:hover {
+            transform: scale(1.02);
+            border-color: #ffd700;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .photo-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
 
-        /* Заглушка если нет фото */
+        /* Заглушка, если фото нет */
         .photo-placeholder {
             width: 100%;
             height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #2d1b69, #11998e);
-            color: #fff;
-            font-size: 1.2rem;
-            padding: 20px;
+            background: linear-gradient(145deg, #2a1a4a, #1a2a3a);
+            color: #8888aa;
+            font-size: 0.9rem;
+            padding: 10px;
             text-align: center;
+            font-style: italic;
         }
 
-        /* Эффект печатной машинки */
-        .typewriter {
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 3px solid #ffd200;
-            animation: blink 0.8s step-end infinite;
-            display: inline-block;
-            font-size: 2.2rem;
-            font-weight: 700;
+        /* --- ФИНАЛЬНЫЙ СЛАЙД (10) --- */
+        .slide-final h2 {
+            font-size: 3rem;
         }
 
-        @keyframes blink {
-            0%, 100% { border-color: #ffd200; }
-            50% { border-color: transparent; }
-        }
-
-        /* Конфетти-финал */
-        .final-title {
-            font-size: 3.5rem;
+        .slide-final .big-final {
+            font-size: 3.6rem;
             font-weight: 900;
-            background: linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0);
+            background: linear-gradient(45deg, #ffd700, #ff6b6b, #a855f7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: glow 2s ease-in-out infinite alternate;
+            animation: pulseGlow 2.5s ease-in-out infinite alternate;
         }
 
-        @keyframes glow {
-            0% { text-shadow: 0 0 20px rgba(255, 0, 128, 0.3); }
-            100% { text-shadow: 0 0 60px rgba(255, 200, 0, 0.6); }
+        @keyframes pulseGlow {
+            0% { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3)); }
+            100% { filter: drop-shadow(0 0 40px rgba(255, 107, 107, 0.5)); }
         }
 
-        /* Кнопка для финала */
-        .btn {
-            display: inline-block;
+        .lotus-quote {
+            font-size: 1.4rem;
+            color: #d4d4f0;
+            max-width: 460px;
+            font-style: italic;
+            border-left: 3px solid #ffd700;
+            padding-left: 20px;
+            margin: 15px auto;
+        }
+
+        /* --- КНОПКА ПЕРЕЗАПУСКА --- */
+        .btn-restart {
             margin-top: 30px;
-            padding: 16px 48px;
-            font-size: 1.3rem;
+            padding: 14px 44px;
+            font-size: 1.1rem;
             font-weight: 700;
             background: linear-gradient(135deg, #f7971e, #ffd200);
-            color: #0b0b1a;
+            color: #0a0a1a;
             border: none;
             border-radius: 50px;
             cursor: pointer;
             transition: 0.3s;
-            text-decoration: none;
         }
 
-        .btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 40px rgba(255, 210, 0, 0.5);
+        .btn-restart:hover {
+            transform: scale(1.07);
+            box-shadow: 0 0 50px rgba(255, 210, 0, 0.4);
         }
 
-        /* Адаптив под телефон */
-        @media (max-width: 480px) {
-            .slide h1 { font-size: 2.2rem; }
-            .slide h2 { font-size: 1.6rem; }
-            .slide p { font-size: 1.1rem; }
-            .photo-frame { width: 220px; height: 220px; }
-            .typewriter { font-size: 1.6rem; }
-            .final-title { font-size: 2.6rem; }
+        /* --- АДАПТАЦИЯ ПОД ТЕЛЕФОН --- */
+        @media (max-width: 500px) {
+            .slide h2 { font-size: 1.8rem; }
+            .slide .desc { font-size: 1.05rem; }
+            .photo-item { height: 170px; min-width: 110px; }
+            .slide-final .big-final { font-size: 2.6rem; }
+            .lotus-quote { font-size: 1.1rem; }
         }
 
-        /* Стиль для подсказки скролла */
+        /* Подсказка скролла */
         .scroll-hint {
-            margin-top: 40px;
-            font-size: 0.9rem;
-            color: #666;
-            animation: bounce 2s infinite;
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #555577;
+            animation: float 2.2s ease-in-out infinite;
         }
 
-        @keyframes bounce {
+        @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(10px); }
+            50% { transform: translateY(8px); }
         }
     </style>
 </head>
@@ -191,110 +214,144 @@
 
 <div class="story-container">
 
-    <!-- СЛАЙД 1 — Интрига -->
+    <!-- ====== СЛАЙД 1 ====== -->
     <div class="slide visible" data-index="0">
-        <p style="font-size: 1rem; color: #888; letter-spacing: 3px; text-transform: uppercase;">Листай вниз</p>
-        <div style="height: 20px;"></div>
-        <h1>Однажды...</h1>
-        <p style="font-size: 1.5rem; color: #aaa;">Там, где начинается наша история</p>
-        <div class="scroll-hint">⬇️ Листай дальше ⬇️</div>
+        <span class="number">Глава 1</span>
+        <h2>Первая <span class="highlight">ниточка</span> судьбы</h2>
+        <p class="desc">Тогда я ещё не знала, что этот миг изменит всё. Тонкая связь, которая стала нашим миром. Я благодарна, что судьбу свела нас.</p>
+        <div class="photo-row">
+            <div class="photo-item"><img src="foto1_1.jpg" alt="фото 1" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>✨</div>'"></div>
+            <div class="photo-item"><img src="foto1_2.jpg" alt="фото 2" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>✨</div>'"></div>
+        </div>
+        <div class="scroll-hint">⬇️ листай дальше ⬇️</div>
     </div>
 
-    <!-- СЛАЙД 2 — Дата знакомства -->
+    <!-- ====== СЛАЙД 2 ====== -->
     <div class="slide" data-index="1">
-        <h2>📅 Помнишь этот день?</h2>
-        <div class="photo-frame">
-            <!-- СЮДА ВСТАВЬ СВОЁ ФОТО: вместо "photo_1.jpg" напиши название своего файла -->
-            <img src="photo_1.jpg" alt="Фото 1" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'>Здесь будет наше фото 📸</div>'">
+        <span class="number">Глава 2</span>
+        <h2>Твоя <span class="highlight">нежность</span></h2>
+        <p class="desc">Ты — самый душевный человек, которого я встречала. В твоих глазах столько тепла, что можно согреть целый мир. Твои искренние эмоции меня удивляли.</p>
+        <div class="photo-row">
+            <div class="photo-item"><img src="foto2_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>💜</div>'"></div>
+            <div class="photo-item"><img src="foto2_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>💜</div>'"></div>
         </div>
-        <p>Тот самый момент, когда мир стал ярче ✨</p>
     </div>
 
-    <!-- СЛАЙД 3 — Шутка -->
+    <!-- ====== СЛАЙД 3 ====== -->
     <div class="slide" data-index="2">
-        <h2>😄 А помнишь, как ты...</h2>
-        <p class="big-text">«Случайно» съел мой десерт?</p>
-        <p style="margin-top: 15px;">И сделал вид, что так и было 😂</p>
+        <span class="number">Глава 3</span>
+        <h2>Романтик и <span class="highlight">щедрая</span> душа</h2>
+        <p class="desc">Ты умеешь дарить не просто вещи, а <em>состояние</em>. Твоя щедрость — не в деньгах, а в том, как ты умеешь заботиться. Твоя забота это восьмое чудо света.</p>
+        <div class="photo-row">
+            <div class="photo-item"><img src="foto3_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🪻</div>'"></div>
+            <div class="photo-item"><img src="foto3_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🪻</div>'"></div>
+        </div>
     </div>
 
-    <!-- СЛАЙД 4 — Комплимент -->
+    <!-- ====== СЛАЙД 4 ====== -->
     <div class="slide" data-index="3">
-        <h2>🔥 Но знаешь, что?</h2>
-        <p style="font-size: 2rem; font-weight: 700; color: #ffd700;">Ты — самый крутой</p>
-        <p>В любой непонятной ситуации ты находишь выход</p>
-        <div class="photo-frame">
-            <img src="photo_2.jpg" alt="Фото 2" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'>И это фото тоже 🔥</div>'">
+        <span class="number">Глава 4</span>
+        <h2>Милый мой <span class="highlight">волчоночек</span></h2>
+        <p class="desc">Ты можешь быть серьёзным, а через секунду — смешить меня до слёз. Твой смех и твоя улыбка — моё любимое оружие. Мой пушистый комочек счастья.</p>
+        <div class="photo-row">
+            <div class="photo-item"><img src="foto4_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🐺</div>'"></div>
+            <div class="photo-item"><img src="foto4_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🐺</div>'"></div>
         </div>
     </div>
 
-    <!-- СЛАЙД 5 — Ещё один смешной момент -->
+    <!-- ====== СЛАЙД 5 ====== -->
     <div class="slide" data-index="4">
-        <h2>🤣 А этот момент?</h2>
-        <p>Когда ты пытался быть серьёзным, но у тебя не получилось</p>
-        <p style="margin-top: 20px; font-size: 1.8rem;">😎 👉 😂</p>
-        <p style="margin-top: 10px; color: #aaa;">Именно таким я тебя и люблю</p>
-    </div>
-
-    <!-- СЛАЙД 6 — Трогательный -->
-    <div class="slide" data-index="5">
-        <h2>❤️ Спасибо, что ты есть</h2>
-        <p>За твою улыбку, за твой голос,</p>
-        <p>за то, что ты всегда рядом</p>
-        <div class="photo-frame">
-            <img src="photo_3.jpg" alt="Фото 3" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'>Наше любимое фото ❤️</div>'">
+        <span class="number">Глава 5</span>
+        <h2>Ты <span class="highlight">украшаешь</span> жизнь</h2>
+        <p class="desc">Сколько усилий ты вкладываешь в то, чтобы каждый день был ярче. Ты превращаешь обычное в праздник. Мой мир стар краше с тобой.</p>
+        <div class="photo-row">
+            <div class="photo-item"><img src="foto5_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🎨</div>'"></div>
+            <div class="photo-item"><img src="foto5_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🎨</div>'"></div>
         </div>
     </div>
 
-    <!-- СЛАЙД 7 — ФИНАЛ!!! -->
+    <!-- ====== СЛАЙД 6 ====== -->
+    <div class="slide" data-index="5">
+        <span class="number">Глава 6</span>
+        <h2>Ты — <span class="highlight">рядом</span> всегда</h2>
+        <p class="desc">Ты готов разделить со мной любую минуту. Твоя преданность — это дар, который я ценю больше всего. Я ценю каждый миг проведенный с тобой.</p>
+        <div class="photo-row">
+            <div class="photo-item"><img src="foto6_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>♾️</div>'"></div>
+            <div class="photo-item"><img src="foto6_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>♾️</div>'"></div>
+        </div>
+    </div>
+
+    <!-- ====== СЛАЙД 7 ====== -->
     <div class="slide" data-index="6">
-        <h1 class="final-title">🎉 С ДНЁМ РОЖДЕНИЯ! 🎉</h1>
-        <div style="font-size: 4rem; margin: 10px 0;">🎂🎈🥳</div>
-        <p style="font-size: 1.6rem; font-weight: 600; color: #ffd700;">Ты — мой герой</p>
-        <p style="font-size: 1.2rem; color: #ccc; max-width: 380px;">Пусть этот год принесёт тебе море счастья, драйва и крутых побед. Я рядом ❤️</p>
-        <button class="btn" onclick="restartStory()">🔄 Пройти заново</button>
-        <p style="margin-top: 30px; font-size: 0.9rem; color: #555;">Сделано с любовью специально для тебя</p>
+        <span class="number">Глава 7</span>
+        <h2>Твоя <span class="highlight">воля</span> — непоколебима</h2>
+        <p class="desc">Ты идёшь к цели с такой силой, что это вдохновляет. Ничто не может сломать твой стержень. Это дает тебя держаться своего пути и добиваться успеха.</p>
+        <div class="photo-row">
+            <div class="photo-item"><img src="foto8_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>⛰️</div>'"></div>
+            <div class="photo-item"><img src="foto8_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>⛰️</div>'"></div>
+        </div>
+    </div>
+
+    <!-- ====== СЛАЙД 8 ====== -->
+    <div class="slide" data-index="7">
+        <span class="number">Глава 8</span>
+        <h2>Твоя <span class="highlight">мудрость</span></h2>
+        <p class="desc">Ты никогда не тратишь время зря. Ты чувствуешь жизнь и умеешь находить смысл в каждом дне. Твоя мудрость принесет тебе много лет жизни.</p>
+        <div class="photo-row">
+            <div class="photo-item"><img src="foto9_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🦉</div>'"></div>
+            <div class="photo-item"><img src="foto9_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🦉</div>'"></div>
+        </div>
+    </div>
+
+    <!-- ====== СЛАЙД 10 — ФИНАЛ ====== -->
+    <div class="slide slide-final" data-index="8">
+        <span class="number">Глава 9</span>
+        <h2 class="big-final">Ты — Прекрасный лотосик</h2>
+        <div class="lotus-quote">
+            «Твоя невинная душа, хоть и выросла среди грязи, сохранила свою красоту и стремится ввысь к небу»
+        </div>
+        <p class="desc" style="font-size: 1.4rem; color: #ffd700; font-weight: 600;">
+            Ты — просто очень хороший человек. 🌸
+        </p>
+        <p class="desc" style="font-size: 1.2rem; max-width: 400px;">
+            Таким я тебя вижу. Таким я тебя люблю. ❤️
+        </p>
+        <div class="photo-row">
+            <div class="photo-item"><img src="foto10_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🌸</div>'"></div>
+            <div class="photo-item"><img src="foto10_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🌸</div>'"></div>
+        </div>
+        <button class="btn-restart" onclick="restartStory()">🔄 Пройти заново</button>
+        <p style="margin-top: 30px; font-size: 0.8rem; color: #444466;">Сделано с душой 💫</p>
     </div>
 
 </div>
 
 <script>
-    // ---------- Анимация появления слайдов при скролле ----------
+    // ---------- ПОЯВЛЕНИЕ СЛАЙДОВ ПРИ СКРОЛЛЕ ----------
     const slides = document.querySelectorAll('.slide');
 
     function checkVisibility() {
         const windowHeight = window.innerHeight;
         slides.forEach(slide => {
             const rect = slide.getBoundingClientRect();
-            // Слайд становится видимым, когда его верхняя часть доходит до середины экрана
-            if (rect.top < windowHeight * 0.7) {
+            if (rect.top < windowHeight * 0.75) {
                 slide.classList.add('visible');
-            } else {
-                // Можно оставить видимыми, но для эффекта убираем класс, если хотим, чтобы исчезали — закомментируй строку ниже
-                // slide.classList.remove('visible');
             }
         });
     }
 
     window.addEventListener('scroll', checkVisibility);
     window.addEventListener('resize', checkVisibility);
-    checkVisibility(); // Проверка при загрузке
+    checkVisibility();
 
-    // ---------- Перезапуск истории (скроллим наверх) ----------
+    // ---------- ПЕРЕЗАПУСК ----------
     function restartStory() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        // Сбросим видимость, чтобы заново показать все слайды
-        slides.forEach(slide => {
-            slide.classList.remove('visible');
-        });
-        // Через полсекунды первый станет видимым
+        slides.forEach(s => s.classList.remove('visible'));
         setTimeout(() => {
             slides[0].classList.add('visible');
         }, 500);
     }
-
-    // ---------- Эффект печатной машинки для первого слайда (если нужно) ----------
-    // Можно оставить как есть, он уже есть в стилях
-    console.log('С Днём Рождения! 🎉');
 </script>
 
 </body>
