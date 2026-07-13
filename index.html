@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С Днём Рождения!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0b0b1a;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Контейнер для всех слайдов */
+        .story-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px 20px 100px 20px;
+        }
+
+        /* Каждый слайд */
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 0.3;
+            transform: scale(0.95);
+            transition: all 0.8s ease;
+            padding: 30px 20px;
+            border-bottom: 2px dashed rgba(255, 255, 255, 0.05);
+        }
+
+        /* Когда слайд виден */
+        .slide.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Заголовки */
+        .slide h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .slide h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .slide p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #d0d0e0;
+            max-width: 450px;
+        }
+
+        .slide .big-text {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ff6b6b;
+        }
+
+        /* Стиль для фото-рамки */
+        .photo-frame {
+            width: 280px;
+            height: 280px;
+            border-radius: 30px;
+            overflow: hidden;
+            margin: 20px auto;
+            border: 4px solid #ffd200;
+            box-shadow: 0 20px 60px rgba(255, 210, 0, 0.2);
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Заглушка если нет фото */
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2d1b69, #11998e);
+            color: #fff;
+            font-size: 1.2rem;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Эффект печатной машинки */
+        .typewriter {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #ffd200;
+            animation: blink 0.8s step-end infinite;
+            display: inline-block;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        @keyframes blink {
+            0%, 100% { border-color: #ffd200; }
+            50% { border-color: transparent; }
+        }
+
+        /* Конфетти-финал */
+        .final-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 20px rgba(255, 0, 128, 0.3); }
+            100% { text-shadow: 0 0 60px rgba(255, 200, 0, 0.6); }
+        }
+
+        /* Кнопка для финала */
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 16px 48px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            color: #0b0b1a;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 40px rgba(255, 210, 0, 0.5);
+        }
+
+        /* Адаптив под телефон */
+        @media (max-width: 480px) {
+            .slide h1 { font-size: 2.2rem; }
+            .slide h2 { font-size: 1.6rem; }
+            .slide p { font-size: 1.1rem; }
+            .photo-frame { width: 220px; height: 220px; }
+            .typewriter { font-size: 1.6rem; }
+            .final-title { font-size: 2.6rem; }
+        }
+
+        /* Стиль для подсказки скролла */
+        .scroll-hint {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #666;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="story-container">
+
+    <!-- СЛАЙД 1 — Интрига -->
+    <div class="slide visible" data-index="0">
+        <p style="font-size: 1rem; color: #888; letter-spacing: 3px; text-transform: uppercase;">Листай вниз</p>
+        <div style="height: 20px;"></div>
+        <h1>Однажды...</h1>
+        <p style="font-size: 1.5rem; color: #aaa;">Там, где начинается наша история</p>
+        <div class="scroll-hint">⬇️ Листай дальше ⬇️</div>
+    </div>
+
+    <!-- СЛАЙД 2 — Дата знакомства -->
+    <div class="slide" data-index="1">
+        <h2>📅 Помнишь этот день?</h2>
+        <div class="photo-frame">
+            <!-- СЮДА ВСТАВЬ СВОЁ ФОТО: вместо "photo_1.jpg" напиши название своего файла -->
+            <img src="photo_1.jpg" alt="Фото 1" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'>Здесь будет наше фото 📸</div>'">
+        </div>
+        <p>Тот самый момент, когда мир стал ярче ✨</p>
+    </div>
+
+    <!-- СЛАЙД 3 — Шутка -->
+    <div class="slide" data-index="2">
+        <h2>😄 А помнишь, как ты...</h2>
+        <p class="big-text">«Случайно» съел мой десерт?</p>
+        <p style="margin-top: 15px;">И сделал вид, что так и было 😂</p>
+    </div>
+
+    <!-- СЛАЙД 4 — Комплимент -->
+    <div class="slide" data-index="3">
+        <h2>🔥 Но знаешь, что?</h2>
+        <p style="font-size: 2rem; font-weight: 700; color: #ffd700;">Ты — самый крутой</p>
+        <p>В любой непонятной ситуации ты находишь выход</p>
+        <div class="photo-frame">
+            <img src="photo_2.jpg" alt="Фото 2" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'>И это фото тоже 🔥</div>'">
+        </div>
+    </div>
+
+    <!-- СЛАЙД 5 — Ещё один смешной момент -->
+    <div class="slide" data-index="4">
+        <h2>🤣 А этот момент?</h2>
+        <p>Когда ты пытался быть серьёзным, но у тебя не получилось</p>
+        <p style="margin-top: 20px; font-size: 1.8rem;">😎 👉 😂</p>
+        <p style="margin-top: 10px; color: #aaa;">Именно таким я тебя и люблю</p>
+    </div>
+
+    <!-- СЛАЙД 6 — Трогательный -->
+    <div class="slide" data-index="5">
+        <h2>❤️ Спасибо, что ты есть</h2>
+        <p>За твою улыбку, за твой голос,</p>
+        <p>за то, что ты всегда рядом</p>
+        <div class="photo-frame">
+            <img src="photo_3.jpg" alt="Фото 3" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'>Наше любимое фото ❤️</div>'">
+        </div>
+    </div>
+
+    <!-- СЛАЙД 7 — ФИНАЛ!!! -->
+    <div class="slide" data-index="6">
+        <h1 class="final-title">🎉 С ДНЁМ РОЖДЕНИЯ! 🎉</h1>
+        <div style="font-size: 4rem; margin: 10px 0;">🎂🎈🥳</div>
+        <p style="font-size: 1.6rem; font-weight: 600; color: #ffd700;">Ты — мой герой</p>
+        <p style="font-size: 1.2rem; color: #ccc; max-width: 380px;">Пусть этот год принесёт тебе море счастья, драйва и крутых побед. Я рядом ❤️</p>
+        <button class="btn" onclick="restartStory()">🔄 Пройти заново</button>
+        <p style="margin-top: 30px; font-size: 0.9rem; color: #555;">Сделано с любовью специально для тебя</p>
+    </div>
+
+</div>
+
+<script>
+    // ---------- Анимация появления слайдов при скролле ----------
+    const slides = document.querySelectorAll('.slide');
+
+    function checkVisibility() {
+        const windowHeight = window.innerHeight;
+        slides.forEach(slide => {
+            const rect = slide.getBoundingClientRect();
+            // Слайд становится видимым, когда его верхняя часть доходит до середины экрана
+            if (rect.top < windowHeight * 0.7) {
+                slide.classList.add('visible');
+            } else {
+                // Можно оставить видимыми, но для эффекта убираем класс, если хотим, чтобы исчезали — закомментируй строку ниже
+                // slide.classList.remove('visible');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', checkVisibility);
+    window.addEventListener('resize', checkVisibility);
+    checkVisibility(); // Проверка при загрузке
+
+    // ---------- Перезапуск истории (скроллим наверх) ----------
+    function restartStory() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Сбросим видимость, чтобы заново показать все слайды
+        slides.forEach(slide => {
+            slide.classList.remove('visible');
+        });
+        // Через полсекунды первый станет видимым
+        setTimeout(() => {
+            slides[0].classList.add('visible');
+        }, 500);
+    }
+
+    // ---------- Эффект печатной машинки для первого слайда (если нужно) ----------
+    // Можно оставить как есть, он уже есть в стилях
+    console.log('С Днём Рождения! 🎉');
+</script>
+
+</body>
+</html>
