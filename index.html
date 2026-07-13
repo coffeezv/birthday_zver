@@ -13,15 +13,16 @@
         }
 
         body {
-            background: #0a0a1a;
+            background: linear-gradient(145deg, #f5eff9, #e8dff5, #f0e8fa);
             font-family: 'Segoe UI', 'Arial', sans-serif;
-            color: #fff;
+            color: #2d1b3d;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
         /* Контейнер */
         .story-container {
-            max-width: 700px;
+            max-width: 720px;
             margin: 0 auto;
             padding: 20px 20px 80px 20px;
         }
@@ -38,7 +39,7 @@
             opacity: 0.2;
             transform: translateY(60px);
             transition: all 0.9s ease;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(150, 100, 200, 0.08);
             scroll-margin-top: 20px;
         }
 
@@ -49,15 +50,16 @@
 
         /* --- ТЕКСТЫ --- */
         .slide .number {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: #ffd700;
-            background: rgba(255, 215, 0, 0.12);
+            color: #8b6ba8;
+            background: rgba(150, 100, 200, 0.12);
             padding: 6px 20px;
             border-radius: 30px;
             display: inline-block;
             margin-bottom: 20px;
+            font-weight: 600;
         }
 
         .slide h2 {
@@ -65,107 +67,179 @@
             font-weight: 800;
             margin-bottom: 16px;
             line-height: 1.3;
+            color: #3a2352;
         }
 
         .slide h2 .highlight {
-            background: linear-gradient(135deg, #ffd700, #ff6b6b);
+            background: linear-gradient(135deg, #a855f7, #7c3aed, #6d28d9);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .slide .desc {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             line-height: 1.8;
-            color: #c8c8e0;
+            color: #4a3a5a;
             max-width: 520px;
             margin-bottom: 25px;
         }
 
         .slide .desc em {
-            color: #ffd700;
+            color: #7c3aed;
             font-style: normal;
             font-weight: 600;
         }
 
-        /* --- ФОТО-БЛОК (два фото рядом) --- */
+        /* --- ФОТО-БЛОК С НИТОЧКОЙ --- */
         .photo-row {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
+            align-items: center;
+            gap: 0;
             width: 100%;
-            max-width: 500px;
+            max-width: 520px;
             margin: 10px 0 10px 0;
+            position: relative;
+        }
+
+        /* Ниточка между фото (только для двух фото) */
+        .photo-row .thread-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0;
+            position: relative;
+            width: 100%;
         }
 
         .photo-item {
-            flex: 1 1 180px;
-            min-width: 140px;
-            max-width: 260px;
-            height: 220px;
-            border-radius: 24px;
+            flex: 0 1 auto;
+            width: 200px;
+            height: auto;
+            border-radius: 12px;
             overflow: hidden;
-            border: 2px solid rgba(255, 215, 0, 0.25);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
-            background: #1a1a2e;
+            background: #ffffff;
+            padding: 8px 8px 20px 8px;
+            box-shadow: 
+                0 8px 30px rgba(120, 80, 180, 0.15),
+                0 2px 8px rgba(120, 80, 180, 0.08);
             transition: 0.4s ease;
+            position: relative;
+            transform: rotate(-1deg);
+            border: 1px solid rgba(200, 170, 230, 0.3);
+        }
+
+        .photo-item:nth-child(2) {
+            transform: rotate(2deg);
         }
 
         .photo-item:hover {
-            transform: scale(1.02);
-            border-color: #ffd700;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+            transform: scale(1.03) rotate(0deg);
+            box-shadow: 
+                0 12px 40px rgba(120, 80, 180, 0.25),
+                0 4px 12px rgba(120, 80, 180, 0.12);
         }
 
         .photo-item img {
             width: 100%;
-            height: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;
             object-fit: cover;
             display: block;
+            border-radius: 8px;
+        }
+
+        /* Подпись под фото (как на полароиде) */
+        .photo-item .photo-caption {
+            font-size: 0.6rem;
+            color: #8b7a9a;
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+            letter-spacing: 1px;
+            font-weight: 300;
         }
 
         /* Заглушка, если фото нет */
         .photo-placeholder {
             width: 100%;
-            height: 100%;
+            aspect-ratio: 1 / 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(145deg, #2a1a4a, #1a2a3a);
-            color: #8888aa;
-            font-size: 0.9rem;
-            padding: 10px;
-            text-align: center;
-            font-style: italic;
+            background: linear-gradient(145deg, #e8dff5, #d5c8e8);
+            color: #8b7a9a;
+            font-size: 2rem;
+            border-radius: 8px;
         }
 
-        /* --- ФИНАЛЬНЫЙ СЛАЙД (10) --- */
-        .slide-final h2 {
-            font-size: 3rem;
+        /* --- НИТОЧКА МЕЖДУ ФОТО --- */
+        .thread-line {
+            flex: 0 0 auto;
+            width: 40px;
+            height: 2px;
+            background: repeating-linear-gradient(
+                90deg,
+                #a78bc7,
+                #a78bc7 6px,
+                transparent 6px,
+                transparent 10px
+            );
+            position: relative;
+            margin: 0 10px;
+            opacity: 0.6;
         }
 
+        /* Добавляем узелки на ниточке */
+        .thread-line::before,
+        .thread-line::after {
+            content: '✦';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 8px;
+            color: #8b6ba8;
+            opacity: 0.5;
+        }
+
+        .thread-line::before {
+            left: -6px;
+        }
+
+        .thread-line::after {
+            right: -6px;
+        }
+
+        /* --- ФИНАЛЬНЫЙ СЛАЙД --- */
         .slide-final .big-final {
             font-size: 3.6rem;
             font-weight: 900;
-            background: linear-gradient(45deg, #ffd700, #ff6b6b, #a855f7);
+            background: linear-gradient(45deg, #a855f7, #7c3aed, #6d28d9, #a855f7);
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: pulseGlow 2.5s ease-in-out infinite alternate;
+            animation: shimmer 3s ease-in-out infinite alternate;
         }
 
-        @keyframes pulseGlow {
-            0% { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3)); }
-            100% { filter: drop-shadow(0 0 40px rgba(255, 107, 107, 0.5)); }
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .lotus-quote {
-            font-size: 1.4rem;
-            color: #d4d4f0;
+            font-size: 1.3rem;
+            color: #4a3a5a;
             max-width: 460px;
             font-style: italic;
-            border-left: 3px solid #ffd700;
+            border-left: 3px solid #a855f7;
             padding-left: 20px;
             margin: 15px auto;
+            background: rgba(168, 85, 247, 0.05);
+            padding: 15px 20px;
+            border-radius: 0 16px 16px 0;
         }
 
         /* --- КНОПКА ПЕРЕЗАПУСКА --- */
@@ -174,33 +248,65 @@
             padding: 14px 44px;
             font-size: 1.1rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #f7971e, #ffd200);
-            color: #0a0a1a;
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            color: #fff;
             border: none;
             border-radius: 50px;
             cursor: pointer;
             transition: 0.3s;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
         }
 
         .btn-restart:hover {
             transform: scale(1.07);
-            box-shadow: 0 0 50px rgba(255, 210, 0, 0.4);
+            box-shadow: 0 8px 40px rgba(124, 58, 237, 0.4);
         }
 
         /* --- АДАПТАЦИЯ ПОД ТЕЛЕФОН --- */
         @media (max-width: 500px) {
             .slide h2 { font-size: 1.8rem; }
-            .slide .desc { font-size: 1.05rem; }
-            .photo-item { height: 170px; min-width: 110px; }
-            .slide-final .big-final { font-size: 2.6rem; }
-            .lotus-quote { font-size: 1.1rem; }
+            .slide .desc { font-size: 1rem; }
+            
+            .photo-item {
+                width: 140px;
+                padding: 6px 6px 16px 6px;
+            }
+
+            .photo-item .photo-caption {
+                font-size: 0.5rem;
+            }
+
+            .thread-line {
+                width: 20px;
+                margin: 0 5px;
+            }
+
+            .slide-final .big-final { font-size: 2.4rem; }
+            .lotus-quote { font-size: 1rem; }
+        }
+
+        @media (max-width: 380px) {
+            .photo-item {
+                width: 110px;
+                padding: 5px 5px 12px 5px;
+            }
+
+            .photo-item .photo-caption {
+                font-size: 0.4rem;
+                margin-top: 4px;
+            }
+
+            .thread-line {
+                width: 12px;
+                margin: 0 3px;
+            }
         }
 
         /* Подсказка скролла */
         .scroll-hint {
             margin-top: 30px;
             font-size: 0.8rem;
-            color: #555577;
+            color: #a78bc7;
             animation: float 2.2s ease-in-out infinite;
         }
 
@@ -218,10 +324,17 @@
     <div class="slide visible" data-index="0">
         <span class="number">Глава 1</span>
         <h2>Первая <span class="highlight">ниточка</span> судьбы</h2>
-        <p class="desc">Тогда я ещё не знала, что этот миг изменит всё. Тонкая связь, которая стала нашим миром. Я благодарна, что судьбу свела нас.</p>
+        <p class="desc">Тогда я ещё не знала, что этот миг изменит всё. Тонкая связь, которая стала нашим миром. Я благодарна, что судьба свела нас.</p>
         <div class="photo-row">
-            <div class="photo-item"><img src="foto1_1.jpg" alt="фото 1" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>✨</div>'"></div>
-            <div class="photo-item"><img src="foto1_2.jpg" alt="фото 2" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>✨</div>'"></div>
+            <div class="photo-item">
+                <img src="foto1_1.jpg" alt="фото 1" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>✨</div>'">
+                <div class="photo-caption">✦ первый взгляд ✦</div>
+            </div>
+            <div class="thread-line"></div>
+            <div class="photo-item">
+                <img src="foto1_2.jpg" alt="фото 2" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>✨</div>'">
+                <div class="photo-caption">✦ та самая встреча ✦</div>
+            </div>
         </div>
         <div class="scroll-hint">⬇️ листай дальше ⬇️</div>
     </div>
@@ -232,8 +345,15 @@
         <h2>Твоя <span class="highlight">нежность</span></h2>
         <p class="desc">Ты — самый душевный человек, которого я встречала. В твоих глазах столько тепла, что можно согреть целый мир. Твои искренние эмоции меня удивляли.</p>
         <div class="photo-row">
-            <div class="photo-item"><img src="foto2_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>💜</div>'"></div>
-            <div class="photo-item"><img src="foto2_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>💜</div>'"></div>
+            <div class="photo-item">
+                <img src="foto2_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>💜</div>'">
+                <div class="photo-caption">✦ тепло твоей души ✦</div>
+            </div>
+            <div class="thread-line"></div>
+            <div class="photo-item">
+                <img src="foto2_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>💜</div>'">
+                <div class="photo-caption">✦ нежность в каждом жесте ✦</div>
+            </div>
         </div>
     </div>
 
@@ -241,10 +361,17 @@
     <div class="slide" data-index="2">
         <span class="number">Глава 3</span>
         <h2>Романтик и <span class="highlight">щедрая</span> душа</h2>
-        <p class="desc">Ты умеешь дарить не просто вещи, а <em>состояние</em>. Твоя щедрость — не в деньгах, а в том, как ты умеешь заботиться. Твоя забота это восьмое чудо света.</p>
+        <p class="desc">Ты умеешь дарить не просто вещи, а <em>состояние</em>. Твоя щедрость — не в деньгах, а в том, как ты умеешь заботиться. Твоя забота — это восьмое чудо света.</p>
         <div class="photo-row">
-            <div class="photo-item"><img src="foto3_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🪻</div>'"></div>
-            <div class="photo-item"><img src="foto3_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🪻</div>'"></div>
+            <div class="photo-item">
+                <img src="foto3_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🪻</div>'">
+                <div class="photo-caption">✦ забота без границ ✦</div>
+            </div>
+            <div class="thread-line"></div>
+            <div class="photo-item">
+                <img src="foto3_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🪻</div>'">
+                <div class="photo-caption">✦ щедрость души ✦</div>
+            </div>
         </div>
     </div>
 
@@ -254,8 +381,15 @@
         <h2>Милый мой <span class="highlight">волчоночек</span></h2>
         <p class="desc">Ты можешь быть серьёзным, а через секунду — смешить меня до слёз. Твой смех и твоя улыбка — моё любимое оружие. Мой пушистый комочек счастья.</p>
         <div class="photo-row">
-            <div class="photo-item"><img src="foto4_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🐺</div>'"></div>
-            <div class="photo-item"><img src="foto4_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🐺</div>'"></div>
+            <div class="photo-item">
+                <img src="foto4_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🐺</div>'">
+                <div class="photo-caption">✦ улыбка до ушей ✦</div>
+            </div>
+            <div class="thread-line"></div>
+            <div class="photo-item">
+                <img src="foto4_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🐺</div>'">
+                <div class="photo-caption">✦ мой смешной волчонок ✦</div>
+            </div>
         </div>
     </div>
 
@@ -263,10 +397,17 @@
     <div class="slide" data-index="4">
         <span class="number">Глава 5</span>
         <h2>Ты <span class="highlight">украшаешь</span> жизнь</h2>
-        <p class="desc">Сколько усилий ты вкладываешь в то, чтобы каждый день был ярче. Ты превращаешь обычное в праздник. Мой мир стар краше с тобой.</p>
+        <p class="desc">Сколько усилий ты вкладываешь в то, чтобы каждый день был ярче. Ты превращаешь обычное в праздник. Мой мир стал краше с тобой.</p>
         <div class="photo-row">
-            <div class="photo-item"><img src="foto5_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🎨</div>'"></div>
-            <div class="photo-item"><img src="foto5_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🎨</div>'"></div>
+            <div class="photo-item">
+                <img src="foto5_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🎨</div>'">
+                <div class="photo-caption">✦ твой свет ✦</div>
+            </div>
+            <div class="thread-line"></div>
+            <div class="photo-item">
+                <img src="foto5_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🎨</div>'">
+                <div class="photo-caption">✦ краски жизни ✦</div>
+            </div>
         </div>
     </div>
 
@@ -274,10 +415,17 @@
     <div class="slide" data-index="5">
         <span class="number">Глава 6</span>
         <h2>Ты — <span class="highlight">рядом</span> всегда</h2>
-        <p class="desc">Ты готов разделить со мной любую минуту. Твоя преданность — это дар, который я ценю больше всего. Я ценю каждый миг проведенный с тобой.</p>
+        <p class="desc">Ты готов разделить со мной любую минуту. Твоя преданность — это дар, который я ценю больше всего. Я ценю каждый миг, проведённый с тобой.</p>
         <div class="photo-row">
-            <div class="photo-item"><img src="foto6_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>♾️</div>'"></div>
-            <div class="photo-item"><img src="foto6_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>♾️</div>'"></div>
+            <div class="photo-item">
+                <img src="foto6_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>♾️</div>'">
+                <div class="photo-caption">✦ навсегда ✦</div>
+            </div>
+            <div class="thread-line"></div>
+            <div class="photo-item">
+                <img src="foto6_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>♾️</div>'">
+                <div class="photo-caption">✦ бесконечность ✦</div>
+            </div>
         </div>
     </div>
 
@@ -285,10 +433,17 @@
     <div class="slide" data-index="6">
         <span class="number">Глава 7</span>
         <h2>Твоя <span class="highlight">воля</span> — непоколебима</h2>
-        <p class="desc">Ты идёшь к цели с такой силой, что это вдохновляет. Ничто не может сломать твой стержень. Это дает тебя держаться своего пути и добиваться успеха.</p>
+        <p class="desc">Ты идёшь к цели с такой силой, что это вдохновляет. Ничто не может сломать твой стержень. Это даёт тебе возможность держаться своего пути и добиваться успеха.</p>
         <div class="photo-row">
-            <div class="photo-item"><img src="foto8_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>⛰️</div>'"></div>
-            <div class="photo-item"><img src="foto8_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>⛰️</div>'"></div>
+            <div class="photo-item">
+                <img src="foto8_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>⛰️</div>'">
+                <div class="photo-caption">✦ сила духа ✦</div>
+            </div>
+            <div class="thread-line"></div>
+            <div class="photo-item">
+                <img src="foto8_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>⛰️</div>'">
+                <div class="photo-caption">✦ непоколебимость ✦</div>
+            </div>
         </div>
     </div>
 
@@ -296,32 +451,46 @@
     <div class="slide" data-index="7">
         <span class="number">Глава 8</span>
         <h2>Твоя <span class="highlight">мудрость</span></h2>
-        <p class="desc">Ты никогда не тратишь время зря. Ты чувствуешь жизнь и умеешь находить смысл в каждом дне. Твоя мудрость принесет тебе много лет жизни.</p>
+        <p class="desc">Ты никогда не тратишь время зря. Ты чувствуешь жизнь и умеешь находить смысл в каждом дне. Твоя мудрость принесёт тебе много лет жизни.</p>
         <div class="photo-row">
-            <div class="photo-item"><img src="foto9_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🦉</div>'"></div>
-            <div class="photo-item"><img src="foto9_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🦉</div>'"></div>
+            <div class="photo-item">
+                <img src="foto9_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🦉</div>'">
+                <div class="photo-caption">✦ глубокая мудрость ✦</div>
+            </div>
+            <div class="thread-line"></div>
+            <div class="photo-item">
+                <img src="foto9_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🦉</div>'">
+                <div class="photo-caption">✦ осознанность ✦</div>
+            </div>
         </div>
     </div>
 
-    <!-- ====== СЛАЙД 10 — ФИНАЛ ====== -->
+    <!-- ====== СЛАЙД 9 (был 10) — ФИНАЛ ====== -->
     <div class="slide slide-final" data-index="8">
         <span class="number">Глава 9</span>
         <h2 class="big-final">Ты — Прекрасный лотосик</h2>
         <div class="lotus-quote">
             «Твоя невинная душа, хоть и выросла среди грязи, сохранила свою красоту и стремится ввысь к небу»
         </div>
-        <p class="desc" style="font-size: 1.4rem; color: #ffd700; font-weight: 600;">
+        <p class="desc" style="font-size: 1.4rem; color: #7c3aed; font-weight: 600;">
             Ты — просто очень хороший человек. 🌸
         </p>
-        <p class="desc" style="font-size: 1.2rem; max-width: 400px;">
+        <p class="desc" style="font-size: 1.2rem; max-width: 400px; color: #4a3a5a;">
             Таким я тебя вижу. Таким я тебя люблю. ❤️
         </p>
         <div class="photo-row">
-            <div class="photo-item"><img src="foto10_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🌸</div>'"></div>
-            <div class="photo-item"><img src="foto10_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🌸</div>'"></div>
+            <div class="photo-item">
+                <img src="foto10_1.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🌸</div>'">
+                <div class="photo-caption">✦ чистый свет ✦</div>
+            </div>
+            <div class="thread-line"></div>
+            <div class="photo-item">
+                <img src="foto10_2.jpg" alt="фото" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'photo-placeholder\'>🌸</div>'">
+                <div class="photo-caption">✦ лотос души ✦</div>
+            </div>
         </div>
         <button class="btn-restart" onclick="restartStory()">🔄 Пройти заново</button>
-        <p style="margin-top: 30px; font-size: 0.8rem; color: #444466;">Сделано с душой 💫</p>
+        <p style="margin-top: 30px; font-size: 0.8rem; color: #a78bc7;">Сделано с душой 💫</p>
     </div>
 
 </div>
