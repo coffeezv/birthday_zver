@@ -569,6 +569,24 @@
         msg.classList.remove('show');
     }
 </script>
+<!-- ФОНОВАЯ МУЗЫКА -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="happy-birthday.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    // Автозапуск музыки при первом касании/клике (чтобы работало на телефонах)
+    document.addEventListener('click', function startMusic() {
+        const music = document.getElementById('bgMusic');
+        music.play().catch(() => {});
+        document.removeEventListener('click', startMusic);
+    });
+
+    // Или можно запустить при загрузке (но на телефонах может не сработать)
+    // window.addEventListener('load', function() {
+    //     document.getElementById('bgMusic').play().catch(() => {});
+    // });
+</script>
 
 </body>
 </html>
